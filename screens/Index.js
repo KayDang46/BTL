@@ -25,20 +25,38 @@ export default Index = ({ navigation }) => {
     let newArrivals_data = [
         {
             id: 1,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=300',
+            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
         },
         {
             id: 2,
+            image: 'https://store.onlyfans.com/cdn/shop/files/ONLYFANS-4807_Square.jpg?v=1692199038&width=300',
+        },
+        {
+            id: 3,
             image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=300',
-        }
+        },
+        // {
+        //     id: 4,
+        //     image: 'https://store.onlyfans.com/cdn/shop/files/ONLYFANS-4807_Square.jpg?v=1692199038&width=300',
+        // },
+        // {
+        //     id: 5,
+        //     image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=300',
+        // }
     ];
 
     let newArrivals_item = ({ item }) => {
         return (
-            <TouchableOpacity style={styles.product__item}
-                // onPress={() => navigation.navigate({name: 'Product', params: {item}})}
+            <TouchableOpacity style
+            // onPress={() => navigation.navigate({name: 'Product', params: {item}})}
             >
-                <Image source={item.image}></Image>
+                <View style={{width: 200, height: 200}}>
+                    <Image source={{ uri: item.image }} style={{width: 200, height: 200}}></Image>
+                </View>
+                <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                    <Text>Name</Text>
+                    <Text>Price</Text>
+                </View>
             </TouchableOpacity>
         )
     };
@@ -151,13 +169,14 @@ export default Index = ({ navigation }) => {
                     </View>
                     <View style={styles.title__line} />
                 </View>
-                <View style={styles.newArrivals}>
+                <View style={[styles.newArrivals, {alignItems: 'center', justifyContent: 'center'}]}>
                     <FlatList
                         horizontal
                         data={newArrivals_data}
                         showsVerticalScrollIndicator={false}
+                        showsHorizontalScrollIndicator={false}
                         renderItem={newArrivals_item}
-                        contentContainerStyle={{ paddingBottom: 100 }}
+                        contentContainerStyle={{ paddingBottom: 0 }}
                         keyExtractor={newArrivals_item => newArrivals_item.id}
                     />
                 </View>
@@ -173,7 +192,8 @@ const styles = StyleSheet.create({
     },
     title: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        margin: 10
     },
     title__line: {
         flex: 1,
