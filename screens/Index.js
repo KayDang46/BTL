@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FaBeer } from "react-icons/fa";
 
 export default Index = ({ navigation }) => {
     //Set State for reload items
@@ -48,8 +47,7 @@ export default Index = ({ navigation }) => {
             <View style={[styles.header, styles.f_center, styles.f_sb, styles.row]}>
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.header__item}>
-                        {/* <Image source={{uri: header__imgs[0]}} style={styles.icon}/> */}
-                        <FaBeer />
+                        <Image source={{uri: header__imgs[0]}} style={styles.icon}/>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.header__item}>
