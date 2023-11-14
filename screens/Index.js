@@ -22,6 +22,27 @@ export default Index = ({ navigation }) => {
     //         .catch(error => console.error('Error fetching data:', error));
     // },[]);
 
+    let newArrivals_data = [
+        {
+            id: 1,
+            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=300',
+        },
+        {
+            id: 2,
+            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=300',
+        }
+    ];
+
+    let newArrivals_item = ({ item }) => {
+        return (
+            <TouchableOpacity style={styles.product__item}
+                // onPress={() => navigation.navigate({name: 'Product', params: {item}})}
+            >
+                <Image source={item.image}></Image>
+            </TouchableOpacity>
+        )
+    };
+
     let header__imgs = [
         'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/esskl98l5b52i8rag9jq.png',
         'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/klasfpxswxaglw2ujbtn.png',
@@ -44,87 +65,101 @@ export default Index = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={[styles.header, styles.f_center, styles.f_sb, styles.row]}>
+            <View style={[styles.header, styles.f__center, styles.f__sb, styles.row]}>
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.header__item}>
-                        <Image source={{uri: header__imgs[0]}} style={styles.icon}/>
+                        <Image source={{ uri: header__imgs[0] }} style={styles.icon} />
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.header__item}>
-                        <Image source={{uri: header__imgs[1]}} style={styles.icon}/>
+                        <Image source={{ uri: header__imgs[1] }} style={styles.icon} />
                     </TouchableOpacity>
                 </View>
 
                 <TouchableOpacity>
-                    <Image source={{uri: header__imgs[2]}} style={styles.logo}/>
+                    <Image source={{ uri: header__imgs[2] }} style={styles.logo} />
                 </TouchableOpacity>
 
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.header__item}>
-                        <Image source={{uri: header__imgs[3]}} style={styles.icon}/>
+                        <Image source={{ uri: header__imgs[3] }} style={styles.icon} />
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.header__item}>
-                        <Image source={{uri: header__imgs[4]}} style={styles.icon}/>
+                        <Image source={{ uri: header__imgs[4] }} style={styles.icon} />
                     </TouchableOpacity>
                 </View>
             </View>
-            <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+            <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
                 <View style={styles.content}>
-                    <View style={[styles.feature, styles.f_center]}>
-                        <View style={[ styles.f_sb]}>
+                    <View style={[styles.feature, styles.f__center]}>
+                        <View style={[styles.f__sb]}>
                             <View style={styles.col}>
                                 <TouchableOpacity style={styles.feature__item}>
-                                    <Image source={{uri: feature__imgs[0]}} style={[styles.feature__image, styles.feature__image__Vrectangle]} />
+                                    <Image source={{ uri: feature__imgs[0] }} style={[styles.feature__image, styles.feature__image__Vrectangle]} />
                                 </TouchableOpacity>
                             </View>
-                            
-                            <View style={[styles.f_sb, styles.row]}>
+
+                            <View style={[styles.f__sb, styles.row]}>
                                 <TouchableOpacity style={styles.feature__item}>
-                                    <Image source={{uri: feature__imgs[1]}} style={[styles.feature__image, styles.feature__image__square]} />
+                                    <Image source={{ uri: feature__imgs[1] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.feature__item}>
-                                    <Image source={{uri: feature__imgs[2]}} style={[styles.feature__image, styles.feature__image__square]} />
+                                    <Image source={{ uri: feature__imgs[2] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
                             </View>
 
                             <View>
                                 <TouchableOpacity style={styles.feature__item}>
-                                    <Image source={{uri: feature__imgs[3]}} style={[styles.feature__image, styles.feature__image__Vrectangle]} />
+                                    <Image source={{ uri: feature__imgs[3] }} style={[styles.feature__image, styles.feature__image__Vrectangle]} />
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={[styles.f_sb, styles.row]}>
+                            <View style={[styles.f__sb, styles.row]}>
                                 <View style={[styles.f_sb, styles.col]}>
                                     <TouchableOpacity style={styles.feature__item}>
-                                        <Image source={{uri: feature__imgs[4]}} style={[styles.feature__image, styles.feature__image__square]} />
+                                        <Image source={{ uri: feature__imgs[4] }} style={[styles.feature__image, styles.feature__image__square]} />
                                     </TouchableOpacity>
 
                                     <TouchableOpacity style={styles.feature__item}>
-                                        <Image source={{uri: feature__imgs[5]}} style={[styles.feature__image, styles.feature__image__square]} />
+                                        <Image source={{ uri: feature__imgs[5] }} style={[styles.feature__image, styles.feature__image__square]} />
                                     </TouchableOpacity>
                                 </View>
 
                                 <TouchableOpacity style={styles.feature__item}>
-                                        <Image source={{uri: feature__imgs[6]}} style={[styles.feature__image, styles.feature__image__Hrectangle]} />
+                                    <Image source={{ uri: feature__imgs[6] }} style={[styles.feature__image, styles.feature__image__Hrectangle]} />
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={[styles.f_sb, styles.row]}>
+                            <View style={[styles.f__sb, styles.row]}>
                                 <TouchableOpacity style={styles.feature__item}>
-                                    <Image source={{uri: feature__imgs[7]}} style={[styles.feature__image, styles.feature__image__square]} />
+                                    <Image source={{ uri: feature__imgs[7] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.feature__item}>
-                                    <Image source={{uri: feature__imgs[8]}} style={[styles.feature__image, styles.feature__image__square]} />
+                                    <Image source={{ uri: feature__imgs[8] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </View>
                 </View>
                 <View style={styles.title}>
-
+                    <View style={styles.title__line} />
+                    <View>
+                        <Text style={styles.title__text}>New Arrivals</Text>
+                    </View>
+                    <View style={styles.title__line} />
+                </View>
+                <View style={styles.newArrivals}>
+                    <FlatList
+                        horizontal
+                        data={newArrivals_data}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={newArrivals_item}
+                        contentContainerStyle={{ paddingBottom: 100 }}
+                        keyExtractor={newArrivals_item => newArrivals_item.id}
+                    />
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -133,12 +168,28 @@ export default Index = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    f_sb: {
+    title: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    title__line: {
+        flex: 1,
+        height: 3,
+        backgroundColor: 'rgb(0,175,240)'
+    },
+    title__text: {
+        width: 180,
+        textAlign: 'center',
+        fontSize: 28,
+        color: 'rgb(0,175,240)'
+    },
+    f__sb: {
         justifyContent: 'space-between',
     },
-    f_center: {
+    f__center: {
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -152,11 +203,12 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     header: {
-        // marginHorizontal: 5,
         height: 85,
         color: 'hsl(0,0%,96.86%)',
         borderBottomColor: 'rgba(0, 0, 0, 0.1)',
         borderBottomWidth: 1,
+        maxWidth: '95%',
+        width: '100%'
     },
     logo: {
         width: 170,
@@ -192,13 +244,4 @@ const styles = StyleSheet.create({
         width: 180,
         height: 380,
     },
-    'title::after': {
-        content: "",
-        borderBottomColor: 'rgb(0,175,240)',
-        borderBottomWidth: 3,
-        position: 'absolute',
-        top: '50%',
-        left: 0,
-        zIndex: 0,
-    }
 });
