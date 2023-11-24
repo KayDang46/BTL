@@ -1,77 +1,42 @@
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Sidebar from './Sidebar';
 
 export default Index = ({ navigation }) => {
     //Set State for reload items
-    var [data, setData] = useState([]);
+    var [newArrivals__data, setData] = useState([]);
+    // var [instagram__data, setData] = useState([]);
+
 
     //Set Active state for buttons
     let [active, setActive] = useState(0);
 
+    useEffect(() => {
+        fetch('https://6544ac375a0b4b04436cb3e4.mockapi.io/new__arrivals/', {
+            method: 'GET',
+            headers: { 'content-type': 'application/json' },
+        })
+            .then(response => response.json())
+            .then((json) => {
+                newArrivals__data = json;
+                setData(newArrivals__data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
+
     // useEffect(() => {
-    //     fetch('https://6544ac375a0b4b04436cb3e4.mockapi.io/item/', {
+    //     fetch('https://6544ac375a0b4b04436cb3e4.mockapi.io/instagram/', {
     //         method: 'GET',
     //         headers: {'content-type':'application/json'},
     //     })
     //         .then(response => response.json())
     //         .then((json) => {
-    //             data = json;
-    //             setData(data);
+    //             instagram__data = json;
+    //             setData(instagram__data);
     //         })
     //         .catch(error => console.error('Error fetching data:', error));
     // },[]);
-
-    let newArrivals__data = [
-        {
-            id: 1,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=700',
-            name: 'OnlyFans Super Crop Hoodie',
-            price: 20
-        },
-        {
-            id: 2,
-            image: 'https://store.onlyfans.com/cdn/shop/files/ONLYFANS-4807_Square.jpg?v=1692199038&width=700',
-            name: 'OnlyFans Scrunchie - Black',
-            price: 3
-        },
-        {
-            id: 3,
-            image: 'https://store.onlyfans.com/cdn/shop/files/ONLYFANS-June30-1512.jpg?v=1688160732&width=700',
-            name: 'OnlyFans Crop Tank - Blue',
-            price: 5
-        },
-        {
-            id: 4,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnlyFans-3913.jpg?v=1689173624&width=700',
-            name: 'OnlyFans Track Shorts - Black',
-            price: 14
-        },
-        {
-            id: 5,
-            image: 'https://store.onlyfans.com/cdn/shop/files/VSP_0059.jpg?v=1689711706&width=700',
-            name: 'OnlyFans Visor',
-            price: 3
-        },
-        {
-            id: 6,
-            image: 'https://store.onlyfans.com/cdn/shop/files/VSP_0043.jpg?v=1689795475&width=700',
-            name: 'OnlyFans Bodysuit - Black',
-            price: 10
-        },
-        {
-            id: 7,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnlyFans-3917.jpg?v=1689173834&width=700',
-            name: 'OnlyFans Circle Logo Tank - Orange',
-            price: 13
-        },
-        {
-            id: 8,
-            image: 'https://store.onlyfans.com/cdn/shop/files/VSP_0046.jpg?v=1689711307&width=700',
-            name: 'OnlyFans Trucker Hat',
-            price: 12
-        }
-    ];
 
     let instagram__data = [
         {
@@ -114,15 +79,13 @@ export default Index = ({ navigation }) => {
             id: 10,
             image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
         },
-
-
     ];
 
     //// Items of New Arrivals Section
     let newArrivals__item = ({ item }) => {
         return (
             <TouchableOpacity style
-            // onPress={() => navigation.navigate({name: 'Product', params: {item}})}
+                onPress={() => navigation.navigate({ name: 'Product', params: { item } })}
             >
                 <View style={{ width: 200, height: 200 }}>
                     <Image source={{ uri: item.image }} style={{ width: 200, height: 200 }}></Image>
@@ -209,6 +172,7 @@ export default Index = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </View>
+            {/* Overlay */}
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
                 <View style={styles.content}>
                     <View style={[styles.feature, styles.f__center]}>
@@ -297,13 +261,13 @@ export default Index = ({ navigation }) => {
                     />
                 </View>
                 <View style={styles.footer}>
-                    <View style={{flexDirection: 'column'}}>
+                    <View style={{ flexDirection: 'column' }}>
                         <TouchableOpacity>
                             <Image style={styles.logo}
                                 source={{ uri: "https://store.onlyfans.com/cdn/shop/files/OnlyFans_Logo_Full_Blue_2.png?v=1650912266&width=1100" }} />
                         </TouchableOpacity>
 
-                        <View style={{flexDirection: 'row', marginTop: 50, gap: 30}}>
+                        <View style={{ flexDirection: 'row', marginTop: 50, gap: 30 }}>
                             <TouchableOpacity style={styles.icon}>
                                 <Image style={styles.icon}
                                     source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/caepmnawkgrkukwrnhkt.png" }} />
@@ -314,38 +278,36 @@ export default Index = ({ navigation }) => {
                                     source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/izyvbohzs0oxgrmhisz7.png" }} />
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={{width: 37.5, height: 25}}>
-                                <Image style={{width: 37.5, height: 25}}
+                            <TouchableOpacity style={{ width: 37.5, height: 25 }}>
+                                <Image style={{ width: 37.5, height: 25 }}
                                     source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/dcko5ywhl9efxqic4xwm.png" }} />
                             </TouchableOpacity>
                         </View>
-                        <View style={{marginTop: 50, gap: 15}}>
-                            <TouchableOpacity><Text style={{fontSize: 18}}>Search</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={{fontSize: 18}}>About</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={{fontSize: 18}}>Return Policy</Text></TouchableOpacity>
+                        <View style={{ marginTop: 50, gap: 15 }}>
+                            <TouchableOpacity><Text style={{ fontSize: 18 }}>Search</Text></TouchableOpacity>
+                            <TouchableOpacity><Text style={{ fontSize: 18 }}>About</Text></TouchableOpacity>
+                            <TouchableOpacity><Text style={{ fontSize: 18 }}>Return Policy</Text></TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{marginTop: 50}}>
-                        <View style={{ flexDirection: 'row', gap: 10}}>
-                            <TouchableOpacity><Text style={{fontSize: 15}}>© 2023, OnlyFans Store</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={{fontSize: 15}}>Powered by Shopify</Text></TouchableOpacity>
+                    <View style={{ marginTop: 50 }}>
+                        <View style={{ flexDirection: 'row', gap: 10 }}>
+                            <TouchableOpacity><Text style={{ fontSize: 15 }}>© 2023, OnlyFans Store</Text></TouchableOpacity>
+                            <TouchableOpacity><Text style={{ fontSize: 15 }}>Powered by Shopify</Text></TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{marginTop: 15}}>
-                        <View style={{ flexWrap: 'wrap', flexDirection: 'row', gap: 10}}>
-                            <Image source={{ uri: footer__payment[0]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[1]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[2]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[3]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[4]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[5]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[6]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[7]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[8]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[9]}} style={styles.footer__card}/>
-                            <Image source={{ uri: footer__payment[10]}} style={styles.footer__card}/>
-
-                            
+                    <View style={{ marginTop: 20 }}>
+                        <View style={{ flexWrap: 'wrap', flexDirection: 'row', gap: 10 }}>
+                            <Image source={{ uri: footer__payment[0] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[1] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[2] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[3] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[4] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[5] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[6] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[7] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[8] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[9] }} style={styles.footer__card} />
+                            <Image source={{ uri: footer__payment[10] }} style={styles.footer__card} />
                         </View>
                     </View>
                 </View>
