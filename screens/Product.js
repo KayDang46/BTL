@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, FlatList, ScrollView, Pressable } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Sidebar from './Sidebar';
 
 export default Product = ({ navigation, route }) => {
     const [item, setItem] = useState(route.params.item);
@@ -90,11 +89,12 @@ export default Product = ({ navigation, route }) => {
         <SafeAreaView style={styles.container}>
             <View style={[styles.header, styles.f__center, styles.f__sb, styles.row]}>
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.header__item}>
+                    <TouchableOpacity style={styles.header__item} onPress={() => navigation.toggleDrawer()}>
                         <Image source={{ uri: header__imgs[0] }} style={styles.icon} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.header__item}>
+                    <TouchableOpacity style={styles.header__item}
+                    >
                         <Image source={{ uri: header__imgs[1] }} style={styles.icon} />
                     </TouchableOpacity>
                 </View>
@@ -118,7 +118,7 @@ export default Product = ({ navigation, route }) => {
                     <View style={{ width: 400, height: 400 }}>
                         <Image source={{ uri: item.image }} style={{ width: 400, height: 400 }}></Image>
                     </View>
-                    <View style={{ marginHorizontal: 20, justifyContent: 'space-evenly', marginBottom: 30}}>
+                    <View style={{ marginHorizontal: 20, justifyContent: 'space-evenly', marginBottom: 30 }}>
                         <Text style={{ fontSize: 18, color: '#00aeef', fontWeight: 700 }}>{item.name}</Text>
                         <Text style={{ fontSize: 30, color: '#000', fontWeight: 700 }}>${item.price}.00</Text>
 
@@ -158,20 +158,20 @@ export default Product = ({ navigation, route }) => {
                         <TouchableOpacity style={{ marginTop: 20, alignItems: 'center', backgroundColor: '#00aeef', padding: 10, borderRadius: 25 }}><Text style={{ color: '#fff', fontSize: 18 }}>Add to cart</Text></TouchableOpacity>
                     </View>
                     <View style={styles.title}>
-                            <View style={styles.title__line} />
-                            <View>
-                                <Text style={[styles.title__text, { width: 300, fontWeight: 700 }]}>As Seen on Instagram</Text>
-                            </View>
-                            <View style={styles.title__line} />
+                        <View style={styles.title__line} />
+                        <View>
+                            <Text style={[styles.title__text, { width: 300, fontWeight: 700 }]}>As Seen on Instagram</Text>
                         </View>
-                        <View style={[styles.instagram]}>
-                            <FlatList
-                                numColumns={5}
-                                data={instagram__data}
-                                renderItem={instagram__item}
-                                keyExtractor={instagram__item => instagram__item.id}
-                            />
-                        </View>
+                        <View style={styles.title__line} />
+                    </View>
+                    <View style={[styles.instagram]}>
+                        <FlatList
+                            numColumns={5}
+                            data={instagram__data}
+                            renderItem={instagram__item}
+                            keyExtractor={instagram__item => instagram__item.id}
+                        />
+                    </View>
                 </View>
                 <View>
                     <View style={styles.footer}>
@@ -197,7 +197,7 @@ export default Product = ({ navigation, route }) => {
                                         source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/dcko5ywhl9efxqic4xwm.png" }} />
                                 </TouchableOpacity>
                             </View>
-                            
+
                             <View style={{ marginTop: 50, gap: 15 }}>
                                 <TouchableOpacity><Text style={{ fontSize: 18 }}>Search</Text></TouchableOpacity>
                                 <TouchableOpacity><Text style={{ fontSize: 18 }}>About</Text></TouchableOpacity>

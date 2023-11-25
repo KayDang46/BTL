@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { View, Image, Text, SafeAreaView, StyleSheet, FlatList, ActivityIndicator} from "react-native";
 import {
-    View, Image, Text, SafeAreaView, StyleSheet, FlatList, ActivityIndicator,
-} from "react-native";
-
-const Clothing = () => {
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem,
+  } from '@react-navigation/drawer';
+const Clothing = ({ navigation }) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 

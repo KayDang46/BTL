@@ -1,13 +1,18 @@
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Sidebar from './Sidebar';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem,
+  } from '@react-navigation/drawer';
 
 export default Index = ({ navigation }) => {
     //Set State for reload items
     var [newArrivals__data, setData] = useState([]);
     // var [instagram__data, setData] = useState([]);
-
 
     //Set Active state for buttons
     let [active, setActive] = useState(0);
@@ -149,7 +154,7 @@ export default Index = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <View style={[styles.header, styles.f__center, styles.f__sb, styles.row]}>
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.header__item}>
+                    <TouchableOpacity style={styles.header__item} onPress={() => navigation.toggleDrawer()}>
                         <Image source={{ uri: header__imgs[0] }} style={styles.icon} />
                     </TouchableOpacity>
 
@@ -184,7 +189,9 @@ export default Index = ({ navigation }) => {
                             </View>
 
                             <View style={[styles.f__sb, styles.row]}>
-                                <TouchableOpacity style={styles.feature__item}>
+                                <TouchableOpacity style={styles.feature__item}
+                                    onPress={() => navigation.navigate({name: 'Clothing'})}
+                                >
                                     <Image source={{ uri: feature__imgs[1] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
 
