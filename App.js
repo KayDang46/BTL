@@ -25,7 +25,8 @@ export default App = () => {
         <Stack.Screen name='Product' component={Product} options={{ headerShown: false }}></Stack.Screen>
         <Stack.Screen name='Clothing' component={Clothing} options={{ headerShown: false }}></Stack.Screen>
       </Stack.Navigator> */}
-      <Drawer.Navigator initialRouteName="Index">
+      {/* <Drawer.Navigator initialRouteName="Index"> */}
+      <Drawer.Navigator initialRouteName="Clothing">
         <Drawer.Screen name='Index' component={Index} options={{ headerShown: false }}></Drawer.Screen>
         <Drawer.Screen name='Product' component={Product} options={{ headerShown: false }}></Drawer.Screen>
         <Drawer.Screen name='Clothing' component={Clothing} options={{ headerShown: false }}></Drawer.Screen>

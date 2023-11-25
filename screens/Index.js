@@ -1,18 +1,10 @@
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-import {
-    DrawerContentScrollView,
-    DrawerItemList,
-    DrawerItem,
-  } from '@react-navigation/drawer';
 
 export default Index = ({ navigation }) => {
     //Set State for reload items
     var [newArrivals__data, setData] = useState([]);
-    // var [instagram__data, setData] = useState([]);
 
     //Set Active state for buttons
     let [active, setActive] = useState(0);
@@ -106,9 +98,7 @@ export default Index = ({ navigation }) => {
     //// Items of As Seen on Instagram Section
     let instagram__item = ({ item }) => {
         return (
-            <TouchableOpacity style={{ margin: 3 }}
-            // onPress={() => navigation.navigate({name: 'Product', params: {item}})}
-            >
+            <TouchableOpacity style={{ margin: 3 }}>
                 <View style={{ width: 75, height: 75 }}>
                     <Image source={{ uri: item.image }} style={{ width: 75, height: 75, borderRadius: 10 }}></Image>
                 </View>
@@ -152,6 +142,7 @@ export default Index = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
+            {/* Header */}
             <View style={[styles.header, styles.f__center, styles.f__sb, styles.row]}>
                 <View style={styles.row}>
                     <TouchableOpacity style={styles.header__item} onPress={() => navigation.toggleDrawer()}>
@@ -267,6 +258,7 @@ export default Index = ({ navigation }) => {
                         keyExtractor={instagram__item => instagram__item.id}
                     />
                 </View>
+                {/* Footer */}
                 <View style={styles.footer}>
                     <View style={{ flexDirection: 'column' }}>
                         <TouchableOpacity>
