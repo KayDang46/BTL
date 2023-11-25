@@ -28,7 +28,7 @@ export default App = () => {
       {/* <Drawer.Navigator initialRouteName="Index"> */}
       <Drawer.Navigator initialRouteName="Clothing">
         <Drawer.Screen name='Index' component={Index} options={{ headerShown: false }}></Drawer.Screen>
-        <Drawer.Screen name='Product' component={Product} options={{ headerShown: false }}></Drawer.Screen>
+        <Drawer.Screen name='Product' component={Product} options={{ headerShown: false, drawerItemStyle: { display: 'none' } }}></Drawer.Screen>
         <Drawer.Screen name='Clothing' component={Clothing} options={{ headerShown: false }}></Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>

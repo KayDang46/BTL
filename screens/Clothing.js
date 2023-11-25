@@ -63,7 +63,7 @@ const Clothing = ({ navigation }) => {
     let clothing__data = [
         {
             name: "name 1",
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnlyFans-3906_b3a9c9b9-3747-4141-9c50-cc123a4b32d6.jpg?v=1700076876&width=300',
+            image: 'https://store.onlyfans.com/cdn/shop/files/OnlyFans-3906_b3a9c9b9-3747-4141-9c50-cc123a4b32d6.jpg?v=1700076876&width=1100',
             price: 7,
             type: "pants",
             id: "1"
