@@ -1,6 +1,9 @@
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, FlatList, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { FlatList } from 'react-native-gesture-handler';
+import Header from './Header';
+import Footer from './Footer';
 
 export default Index = ({ navigation }) => {
     //Set State for reload items
@@ -21,19 +24,6 @@ export default Index = ({ navigation }) => {
             })
             .catch(error => console.error('Error fetching data:', error));
     }, []);
-
-    // useEffect(() => {
-    //     fetch('https://6544ac375a0b4b04436cb3e4.mockapi.io/instagram/', {
-    //         method: 'GET',
-    //         headers: {'content-type':'application/json'},
-    //     })
-    //         .then(response => response.json())
-    //         .then((json) => {
-    //             instagram__data = json;
-    //             setData(instagram__data);
-    //         })
-    //         .catch(error => console.error('Error fetching data:', error));
-    // },[]);
 
     let instagram__data = [
         {
@@ -106,14 +96,6 @@ export default Index = ({ navigation }) => {
         )
     };
 
-    let header__imgs = [
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/esskl98l5b52i8rag9jq.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/klasfpxswxaglw2ujbtn.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699300339/onlyfan/index/Icon/kliot9ffm7bupw2z7h0a.webp',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/coumb5pfsrrk5ncyljhy.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/f_auto,q_auto/v1/onlyfan/index/Icon/pyhiltqmgy54j36rwf3z',
-    ];
-
     let feature__imgs = [
         'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298787/onlyfan/index/ImgTop/c0u8vwzjwwijstamimcf.webp',
         'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298787/onlyfan/index/ImgTop/xaovebioqsh8g0xxy2yj.webp',
@@ -143,33 +125,9 @@ export default Index = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             {/* Header */}
-            <View style={[styles.header, styles.f__center, styles.f__sb, styles.row]}>
-                <View style={styles.row}>
-                    <TouchableOpacity style={styles.header__item} onPress={() => navigation.toggleDrawer()}>
-                        <Image source={{ uri: header__imgs[0] }} style={styles.icon} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.header__item}>
-                        <Image source={{ uri: header__imgs[1] }} style={styles.icon} />
-                    </TouchableOpacity>
-                </View>
-
-                <TouchableOpacity>
-                    <Image source={{ uri: header__imgs[2] }} style={styles.logo} />
-                </TouchableOpacity>
-
-                <View style={styles.row}>
-                    <TouchableOpacity style={styles.header__item}>
-                        <Image source={{ uri: header__imgs[3] }} style={styles.icon} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.header__item}>
-                        <Image source={{ uri: header__imgs[4] }} style={styles.icon} />
-                    </TouchableOpacity>
-                </View>
-            </View>
-            {/* Overlay */}
-            <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
+            <Header navigation={navigation} />
+            {/* Body */}
+            <ScrollView contentContainerStyle={{ paddingBottom: 70 }} showsVerticalScrollIndicator={false}>
                 <View style={styles.content}>
                     <View style={[styles.feature, styles.f__center]}>
                         <View style={[styles.f__sb]}>
@@ -181,7 +139,7 @@ export default Index = ({ navigation }) => {
 
                             <View style={[styles.f__sb, styles.row]}>
                                 <TouchableOpacity style={styles.feature__item}
-                                    onPress={() => navigation.navigate({name: 'Clothing'})}
+                                    onPress={() => navigation.navigate({ name: 'Clothing' })}
                                 >
                                     <Image source={{ uri: feature__imgs[1] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
@@ -236,7 +194,6 @@ export default Index = ({ navigation }) => {
                     <FlatList
                         horizontal
                         data={newArrivals__data}
-                        // showsVerticalScrollIndicator={false}
                         showsHorizontalScrollIndicator={false}
                         renderItem={newArrivals__item}
                         contentContainerStyle={{ paddingBottom: 0 }}
@@ -258,58 +215,9 @@ export default Index = ({ navigation }) => {
                         keyExtractor={instagram__item => instagram__item.id}
                     />
                 </View>
+
                 {/* Footer */}
-                <View style={styles.footer}>
-                    <View style={{ flexDirection: 'column' }}>
-                        <TouchableOpacity>
-                            <Image style={styles.logo}
-                                source={{ uri: "https://store.onlyfans.com/cdn/shop/files/OnlyFans_Logo_Full_Blue_2.png?v=1650912266&width=1100" }} />
-                        </TouchableOpacity>
-
-                        <View style={{ flexDirection: 'row', marginTop: 50, gap: 30 }}>
-                            <TouchableOpacity style={styles.icon}>
-                                <Image style={styles.icon}
-                                    source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/caepmnawkgrkukwrnhkt.png" }} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.icon}>
-                                <Image style={styles.icon}
-                                    source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/izyvbohzs0oxgrmhisz7.png" }} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={{ width: 37.5, height: 25 }}>
-                                <Image style={{ width: 37.5, height: 25 }}
-                                    source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/dcko5ywhl9efxqic4xwm.png" }} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ marginTop: 50, gap: 15 }}>
-                            <TouchableOpacity><Text style={{ fontSize: 18 }}>Search</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={{ fontSize: 18 }}>About</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={{ fontSize: 18 }}>Return Policy</Text></TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={{ marginTop: 50 }}>
-                        <View style={{ flexDirection: 'row', gap: 10 }}>
-                            <TouchableOpacity><Text style={{ fontSize: 15 }}>© 2023, OnlyFans Store</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={{ fontSize: 15 }}>Powered by Shopify</Text></TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={{ marginTop: 20 }}>
-                        <View style={{ flexWrap: 'wrap', flexDirection: 'row', gap: 10 }}>
-                            <Image source={{ uri: footer__payment[0] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[1] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[2] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[3] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[4] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[5] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[6] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[7] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[8] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[9] }} style={styles.footer__card} />
-                            <Image source={{ uri: footer__payment[10] }} style={styles.footer__card} />
-                        </View>
-                    </View>
-                </View>
+                <Footer navigation={navigation}/>
             </ScrollView>
         </SafeAreaView>
     )
@@ -353,14 +261,6 @@ const styles = StyleSheet.create({
     col: {
         flexDirection: 'column'
     },
-    header: {
-        height: 85,
-        color: 'hsl(0,0%,96.86%)',
-        borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-        borderBottomWidth: 1,
-        maxWidth: '95%',
-        width: '100%'
-    },
     logo: {
         width: 170,
         height: 35
@@ -368,9 +268,6 @@ const styles = StyleSheet.create({
     icon: {
         width: 25,
         height: 25,
-    },
-    header__item: {
-        marginHorizontal: 10,
     },
     feature: {
         marginVertical: 20,
@@ -394,13 +291,5 @@ const styles = StyleSheet.create({
     feature__image__Hrectangle: {
         width: 180,
         height: 380,
-    },
-    footer: {
-        marginTop: 35,
-        marginHorizontal: 20
-    },
-    footer__card: {
-        width: 40,
-        height: 25,
     },
 });

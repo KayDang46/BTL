@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, FlatList, ScrollView, Pressable } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Header from './Header';
+import Footer from './Footer';
 
 export default Product = ({ navigation, route }) => {
     const [item, setItem] = useState(route.params.item);
@@ -53,9 +55,7 @@ export default Product = ({ navigation, route }) => {
     //// Items of As Seen on Instagram Section
     let instagram__item = ({ item }) => {
         return (
-            <TouchableOpacity style={{ margin: 3 }}
-            // onPress={() => navigation.navigate({name: 'Product', params: {item}})}
-            >
+            <TouchableOpacity style={{ margin: 3 }}>
                 <View style={{ width: 75, height: 75 }}>
                     <Image source={{ uri: item.image }} style={{ width: 75, height: 75, borderRadius: 10 }}></Image>
                 </View>
@@ -63,56 +63,10 @@ export default Product = ({ navigation, route }) => {
         )
     };
 
-    let header__imgs = [
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/esskl98l5b52i8rag9jq.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/klasfpxswxaglw2ujbtn.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699300339/onlyfan/index/Icon/kliot9ffm7bupw2z7h0a.webp',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298966/onlyfan/index/Icon/coumb5pfsrrk5ncyljhy.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/f_auto,q_auto/v1/onlyfan/index/Icon/pyhiltqmgy54j36rwf3z',
-    ];
-
-    let footer__payment = [
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/pvyv4ps7yf8picqfj0y3.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/abyftm5s7pimchn1h8q3.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298968/onlyfan/index/Icon/dx10zr87m07beixsiqt5.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298968/onlyfan/index/Icon/p0zgqzg3kesgjxxdwriy.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298968/onlyfan/index/Icon/ngjnwxkmboxlenz2pa8s.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298968/onlyfan/index/Icon/z6m8bzztfke92xtmxjyv.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298968/onlyfan/index/Icon/ghx4qha6iz87emc6no8c.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298968/onlyfan/index/Icon/nwcmpt0kmsxxpli3kuos.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298969/onlyfan/index/Icon/fqbin3vitaewleqririv.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298969/onlyfan/index/Icon/rohv9q4wjjjwdgw63wyy.png',
-        'https://res.cloudinary.com/dpigoorhc/image/upload/v1699298969/onlyfan/index/Icon/cjcxah2gmwdkvzsqo9pw.png',
-    ];
-
     return (
         <SafeAreaView style={styles.container}>
-            <View style={[styles.header, styles.f__center, styles.f__sb, styles.row]}>
-                <View style={styles.row}>
-                    <TouchableOpacity style={styles.header__item} onPress={() => navigation.toggleDrawer()}>
-                        <Image source={{ uri: header__imgs[0] }} style={styles.icon} />
-                    </TouchableOpacity>
+            <Header navigation={navigation} />
 
-                    <TouchableOpacity style={styles.header__item}
-                    >
-                        <Image source={{ uri: header__imgs[1] }} style={styles.icon} />
-                    </TouchableOpacity>
-                </View>
-
-                <TouchableOpacity>
-                    <Image source={{ uri: header__imgs[2] }} style={styles.logo} />
-                </TouchableOpacity>
-
-                <View style={styles.row}>
-                    <TouchableOpacity style={styles.header__item}>
-                        <Image source={{ uri: header__imgs[3] }} style={styles.icon} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.header__item}>
-                        <Image source={{ uri: header__imgs[4] }} style={styles.icon} />
-                    </TouchableOpacity>
-                </View>
-            </View>
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
                 <View style={styles.content}>
                     <View style={{ width: 400, height: 400 }}>
@@ -126,26 +80,31 @@ export default Product = ({ navigation, route }) => {
                         <View style={{ marginTop: 10, gap: 5, flexDirection: 'row' }}>
                             <TouchableOpacity style={active === 0 ? styles.btnAct : styles.btnNotAct}
                                 onPress={() => { setActive(0) }}>
-                                <Text style={{ fontSize: 18, fontWeight: 700, }}>S</Text>
+                                <Text style={{ fontSize: 18, fontWeight: 700, }}>XS</Text>
                             </TouchableOpacity>
-
+                            
                             <TouchableOpacity style={active === 1 ? styles.btnAct : styles.btnNotAct}
                                 onPress={() => { setActive(1) }}>
-                                <Text style={{ fontSize: 18, fontWeight: 700, }}>M</Text>
+                                <Text style={{ fontSize: 18, fontWeight: 700, }}>S</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={active === 2 ? styles.btnAct : styles.btnNotAct}
                                 onPress={() => { setActive(2) }}>
-                                <Text style={{ fontSize: 18, fontWeight: 700, }}>L</Text>
+                                <Text style={{ fontSize: 18, fontWeight: 700, }}>M</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={active === 3 ? styles.btnAct : styles.btnNotAct}
                                 onPress={() => { setActive(3) }}>
+                                <Text style={{ fontSize: 18, fontWeight: 700, }}>L</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={active === 4 ? styles.btnAct : styles.btnNotAct}
+                                onPress={() => { setActive(4) }}>
                                 <Text style={{ fontSize: 18, fontWeight: 700, }}>XL</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={[active === 4 ? styles.btnAct : styles.btnNotAct, { width: 70 }]}
-                                onPress={() => { setActive(4) }}>
+                            <TouchableOpacity style={[active === 5 ? styles.btnAct : styles.btnNotAct, { width: 70 }]}
+                                onPress={() => { setActive(5) }}>
                                 <Text style={{ fontSize: 18, fontWeight: 700, }}>2XL</Text>
                             </TouchableOpacity>
                         </View>
@@ -157,6 +116,7 @@ export default Product = ({ navigation, route }) => {
                         </View>
                         <TouchableOpacity style={{ marginTop: 20, alignItems: 'center', backgroundColor: '#00aeef', padding: 10, borderRadius: 25 }}><Text style={{ color: '#fff', fontSize: 18 }}>Add to cart</Text></TouchableOpacity>
                     </View>
+
                     <View style={styles.title}>
                         <View style={styles.title__line} />
                         <View>
@@ -164,6 +124,7 @@ export default Product = ({ navigation, route }) => {
                         </View>
                         <View style={styles.title__line} />
                     </View>
+
                     <View style={[styles.instagram]}>
                         <FlatList
                             numColumns={5}
@@ -173,62 +134,8 @@ export default Product = ({ navigation, route }) => {
                         />
                     </View>
                 </View>
-                <View>
-                    <View style={styles.footer}>
-                        <View style={{ flexDirection: 'column' }}>
-                            <TouchableOpacity>
-                                <Image style={styles.logo}
-                                    source={{ uri: "https://store.onlyfans.com/cdn/shop/files/OnlyFans_Logo_Full_Blue_2.png?v=1650912266&width=1100" }} />
-                            </TouchableOpacity>
 
-                            <View style={{ flexDirection: 'row', marginTop: 50, gap: 30 }}>
-                                <TouchableOpacity style={styles.icon}>
-                                    <Image style={styles.icon}
-                                        source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/caepmnawkgrkukwrnhkt.png" }} />
-                                </TouchableOpacity>
-
-                                <TouchableOpacity style={styles.icon}>
-                                    <Image style={styles.icon}
-                                        source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/izyvbohzs0oxgrmhisz7.png" }} />
-                                </TouchableOpacity>
-
-                                <TouchableOpacity style={{ width: 37.5, height: 25 }}>
-                                    <Image style={{ width: 37.5, height: 25 }}
-                                        source={{ uri: "https://res.cloudinary.com/dpigoorhc/image/upload/v1699298967/onlyfan/index/Icon/dcko5ywhl9efxqic4xwm.png" }} />
-                                </TouchableOpacity>
-                            </View>
-
-                            <View style={{ marginTop: 50, gap: 15 }}>
-                                <TouchableOpacity><Text style={{ fontSize: 18 }}>Search</Text></TouchableOpacity>
-                                <TouchableOpacity><Text style={{ fontSize: 18 }}>About</Text></TouchableOpacity>
-                                <TouchableOpacity><Text style={{ fontSize: 18 }}>Return Policy</Text></TouchableOpacity>
-                            </View>
-                        </View>
-
-                        <View style={{ marginTop: 50 }}>
-                            <View style={{ flexDirection: 'row', gap: 10 }}>
-                                <TouchableOpacity><Text style={{ fontSize: 15 }}>© 2023, OnlyFans Store</Text></TouchableOpacity>
-                                <TouchableOpacity><Text style={{ fontSize: 15 }}>Powered by Shopify</Text></TouchableOpacity>
-                            </View>
-                        </View>
-
-                        <View style={{ marginTop: 40 }}>
-                            <View style={{ flexWrap: 'wrap', flexDirection: 'row', gap: 10 }}>
-                                <Image source={{ uri: footer__payment[0] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[1] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[2] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[3] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[4] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[5] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[6] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[7] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[8] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[9] }} style={styles.footer__card} />
-                                <Image source={{ uri: footer__payment[10] }} style={styles.footer__card} />
-                            </View>
-                        </View>
-                    </View>
-                </View>
+                <Footer navigation={navigation} />
             </ScrollView>
         </SafeAreaView>
     )
@@ -272,60 +179,10 @@ const styles = StyleSheet.create({
     col: {
         flexDirection: 'column'
     },
-    header: {
-        height: 85,
-        color: 'hsl(0,0%,96.86%)',
-        borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-        borderBottomWidth: 1,
-        maxWidth: '95%',
-        width: '100%'
-    },
-    logo: {
-        width: 170,
-        height: 35
-    },
-    icon: {
-        width: 25,
-        height: 25,
-    },
-    header__item: {
-        marginHorizontal: 10,
-    },
-    feature: {
-        marginVertical: 20,
-    },
-    feature__item: {
-        marginBottom: 15,
-    },
-    feature__image: {
-        borderColor: '#00aff0',
-        borderWidth: 2,
-        borderRadius: 21.5,
-    },
-    feature__image__Vrectangle: {
-        width: 380,
-        height: 180,
-    },
-    feature__image__square: {
-        width: 180,
-        height: 180,
-    },
-    feature__image__Hrectangle: {
-        width: 180,
-        height: 380,
-    },
-    footer: {
-        marginTop: 35,
-        marginHorizontal: 20
-    },
-    footer__card: {
-        width: 40,
-        height: 25,
-    },
     btnAct: {
-        borderColor: '#000',
+        borderColor: '#00aff0',
+        borderWidth: 0.5,
         borderRadius: 25,
-        borderWidth: 2,
         padding: 10,
         width: 50,
         height: 50,
@@ -334,14 +191,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     btnNotAct: {
-        borderColor: '#000',
         borderRadius: 25,
-        borderWidth: 2,
         padding: 10,
         width: 50,
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#00aeef'
+        backgroundColor: '#00aeef',
     }
 });
