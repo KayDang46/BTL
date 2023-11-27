@@ -36,35 +36,35 @@ export default Index = ({ navigation }) => {
         },
         {
             id: 3,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t51.29350-15/397276287_1791501667952124_5715052274080549424_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=F8WLxa3IEAIAX8RZ6nW&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfDMrrN2vLJv_dTeyg5THAcMLovKwFqW0jgKN69w3N3fcw&oe=6569FE72',
         },
         {
             id: 4,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t51.29350-15/396231813_870116821308560_4238164965477424201_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=tYapp4w6glwAX95R2z_&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfDe0DMVQh8qSSA2K1VuwHB-JNJ_Sr5Qe2T94izH-yWFMw&oe=6568EF9C',
         },
         {
             id: 5,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t51.29350-15/393559510_610065917784619_816463821206577283_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=RDuAjzXrgmwAX9aHXNc&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfAbN-MWqgE1tiYl2haPVp6WrodSx3XYP-RC7_c_d-o3gw&oe=6569925E',
         },
         {
             id: 6,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t39.30808-6/398975981_18003320087486312_1469498415018811235_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=6mY9eFPyd9QAX8UmDp1&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfC4MuWJLQUZ0oZCxX2txe_3RSCLu2QXPqwj0YaBUlrdog&oe=6568E004',
         },
         {
             id: 7,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t39.30808-6/399014897_18003038366486312_6881284467806146932_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=Rv-u5mMN8kQAX-SK6qz&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfCaSss16VjP2WqusRxgdlfqwvFfdX_p2axwUGHSRZjQ3Q&oe=656A135D',
         },
         {
             id: 8,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t39.30808-6/396727663_18002558723486312_898888665031614498_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=VV0l330dAyQAX82A12q&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfDtkIfaK_Jh4PThs65ACdWSpbUFIv7Pgusi4HPDvHOVzg&oe=656967F0',
         },
         {
             id: 9,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t39.30808-6/405273581_18005325281486312_2412294890856777446_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=q018BvVwfocAX8cVi4v&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfDcpYO0LpUopZoeYEgs-t5XijQLWG9OfEL--ycVCNUpVQ&oe=6568F0CF',
         },
         {
             id: 10,
-            image: 'https://store.onlyfans.com/cdn/shop/files/OnoyFans-Jun26_Square-3930.jpg?v=1691082127&width=1100',
+            image: 'https://scontent.cdninstagram.com/v/t39.30808-6/402054055_18004359272486312_3659193928957533509_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=c4dd86&_nc_ohc=PmVIMqF2aAwAX-yRGR_&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfCp6ZX1JeU7Rzr2gfo_4oH2mGOcYuwretnLJLDAi-O7zA&oe=6568375F',
         },
     ];
 
@@ -144,7 +144,9 @@ export default Index = ({ navigation }) => {
                                     <Image source={{ uri: feature__imgs[1] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.feature__item}>
+                                <TouchableOpacity style={styles.feature__item}
+                                    onPress={() => navigation.navigate({ name: 'Home Living' })}
+                                >
                                     <Image source={{ uri: feature__imgs[2] }} style={[styles.feature__image, styles.feature__image__square]} />
                                 </TouchableOpacity>
                             </View>
@@ -166,7 +168,9 @@ export default Index = ({ navigation }) => {
                                     </TouchableOpacity>
                                 </View>
 
-                                <TouchableOpacity style={styles.feature__item}>
+                                <TouchableOpacity style={styles.feature__item}
+                                    onPress={() => navigation.navigate({ name: 'Accessories' })}
+                                >
                                     <Image source={{ uri: feature__imgs[6] }} style={[styles.feature__image, styles.feature__image__Hrectangle]} />
                                 </TouchableOpacity>
                             </View>

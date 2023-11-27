@@ -21,7 +21,7 @@ export default Header = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate({ name: 'Index' })}>
+            <TouchableOpacity onPress={() => navigation.navigate({ name: 'Home' })}>
                 <Image source={{ uri: header__imgs[2] }} style={styles.logo} />
             </TouchableOpacity>
 

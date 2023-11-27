@@ -4,37 +4,36 @@ import { FlatList } from 'react-native-gesture-handler';
 import Header from "./Header";
 import Footer from './Footer';
 
-const Clothing = ({ navigation }) => {
-    // const [clothing__data, setData] = useState([]);
+const Accessories = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
-    var [clothing__data, setData] = useState([]);
+    var [accessories__data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('https://655683f184b36e3a431fd9be.mockapi.io/clothing/', {
+        fetch('https://6560123f83aba11d99d02b3b.mockapi.io/Accessories', {
             method: 'GET',
             headers: { 'content-type': 'application/json' },
         })
             .then(response => response.json())
             .then((json) => {
-                clothing__data = json;
-                setData(clothing__data);
+                accessories__data = json;
+                setData(accessories__data);
             })
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
     
 
-    let clothing__item = ({ item }) => {
+    let accessories__item = ({ item }) => {
         return (
-            <TouchableOpacity style
+            <TouchableOpacity style={{ marginTop: 30}}
                 onPress={() => navigation.navigate({ name: 'Product', params: { item } })}
             >
                 <View style={{ width: 200, height: 200 }}>
-                    <Image source={{ uri: item.image }} style={{ width: 200, height: 200 }}></Image>
+                    <Image source={{ uri: item.url }} style={{ width: 200, height: 200 }}></Image>
                 </View>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ maxWidth: 150, textAlign: 'center', fontSize: 18, color: '#00aeef', fontWeight: 700 }}>{item.name}</Text>
-                    <Text style={{ fontSize: 18, color: '#000', fontWeight: 700 }}>${item.price}.00</Text>
+                <View style={{ justifyContent: 'center', alignItems: 'flex-start', margin: 10 }}>
+                    <Text style={{ maxWidth: 150, textAlign: 'left', fontSize: 18, color: '#00aeef', fontWeight: 700 }}>{item.name}</Text>
+                    <Text style={{ fontSize: 25, textAlign: 'left', color: '#000', fontWeight: 700 }}>${item.price}.00</Text>
                 </View>
             </TouchableOpacity>
         )
@@ -45,7 +44,7 @@ const Clothing = ({ navigation }) => {
 
             <ScrollView contentContainerStyle={{ paddingBottom: 70 }} showsVerticalScrollIndicator={false}>
                 <Text style={{ color: "#00aeef", fontSize: 30, fontWeight: 700, textAlign: "center", marginTop: 30, }}>
-                    Clothing
+                    Accessories
                 </Text>
                 <View style={{ flexDirection: "row", marginTop: 30, justifyContent: 'center', gap: 10 }}>
                     <View style={{ flexDirection: "row", alignItems: "center", borderBottomColor: 'grey', borderBottomWidth: 1, paddingHorizontal: 50 }}>
@@ -69,10 +68,10 @@ const Clothing = ({ navigation }) => {
                 <View style={styles.content}>
                     <FlatList
                         numColumns={2}
-                        data={clothing__data}
-                        renderItem={clothing__item}
+                        data={accessories__data}
+                        renderItem={accessories__item}
                         contentContainerStyle={{ paddingBottom: 0 }}
-                        keyExtractor={clothing__item => clothing__item.id}
+                        keyExtractor={accessories__item => accessories__item.id}
                     />
                 </View>
                 <Footer navigation={navigation}/>
@@ -152,4 +151,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Clothing;
+export default Accessories;

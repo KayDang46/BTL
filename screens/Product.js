@@ -57,7 +57,7 @@ export default Product = ({ navigation, route }) => {
         return (
             <TouchableOpacity style={{ margin: 3 }}>
                 <View style={{ width: 75, height: 75 }}>
-                    <Image source={{ uri: item.image }} style={{ width: 75, height: 75, borderRadius: 10 }}></Image>
+                    <Image source={{ uri: item.url }} style={{ width: 75, height: 75, borderRadius: 10 }}></Image>
                 </View>
             </TouchableOpacity>
         )
@@ -70,7 +70,7 @@ export default Product = ({ navigation, route }) => {
             <ScrollView contentContainerStyle={{ paddingBottom: 80 }} showsVerticalScrollIndicator={false}>
                 <View style={styles.content}>
                     <View style={{ width: 400, height: 400 }}>
-                        <Image source={{ uri: item.image }} style={{ width: 400, height: 400 }}></Image>
+                        <Image source={{ uri: item.url }} style={{ width: 400, height: 400 }}></Image>
                     </View>
                     <View style={{ marginHorizontal: 20, justifyContent: 'space-evenly', marginBottom: 30 }}>
                         <Text style={{ fontSize: 18, color: '#00aeef', fontWeight: 700 }}>{item.name}</Text>
